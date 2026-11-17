@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CustomMatch — Tu maquillaje ideal según tu piel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/estilos.css" />
+</head>
+<body>
+    <!-- Barra de Navegación Juvenil y Limpia -->
+    <header class="navbar">
+        <a href="#" class="brand-logo" id="logoHomeLink">Custom<span>Match</span></a>
+
+        <nav class="nav-links">
+            <a href="#comoFuncionaSection" id="navLinkComoFunciona">¿Cómo funciona?</a>
+            <a href="#catalogoPersonalizadoSection" id="navLinkCatalogo" class="hidden">Mi Catálogo</a>
+            <a href="#atencionSection">Asesoría Personalizada</a>
+        </nav>
+
+        <!-- Botones cuando NO ha iniciado sesión -->
+        <div class="nav-actions" id="navGuestActions">
+            <button class="btn-outline" id="btnOpenLogin" type="button">Iniciar sesión</button>
+            <button class="btn-primary" id="btnOpenRegister" type="button">Crear cuenta</button>
+        </div>
+
+        <!-- Botones cuando SÍ ha iniciado sesión -->
+        <div class="nav-actions hidden" id="navUserActions">
+            <span class="user-greeting" id="navUserName">Hola, Valeria</span>
+            <button class="btn-outline" id="btnEditSkin" type="button">Mi piel</button>
+            <button class="btn-logout" id="btnLogout" type="button">Cerrar sesión</button>
+        </div>
+    </header>
+
+    <main class="main-container">
+        <!-- ===================================================================
+             VISTA 1: BIENVENIDA (Se muestra antes de iniciar sesión o registrarse)
+             =================================================================== -->
+        <div id="welcomeLandingView">
+            <!-- Portada con Ilustraciones Estéticas de Maquillaje -->
+            <section class="welcome-hero">
+                <div class="welcome-text">
+                    <span class="soft-tag">✨ Tu match de maquillaje</span>
+                    <h1>Encuentra el maquillaje exacto para <span>tu piel</span></h1>
+                    <p>
+                        En <strong>CustomMatch</strong> analizamos tu tipo y tono de piel una sola vez para recomendarte las bases, correctores y rubores que realmente van contigo y con tu presupuesto.
+                    </p>
+                    <div class="welcome-buttons">
+                        <button type="button" class="btn-primary btn-lg" id="btnHeroStartRegister">
+                            <span>Comenzar ahora</span>
+                            <svg class="icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 12h14"/><path d="m13 6 6 6-6 6"/>
+                            </svg>
+                        </button>
+                        <button type="button" class="btn-outline btn-lg" id="btnHeroLogin">
+                            Ya tengo una cuenta
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Collage de Dibujos / Ilustraciones de Maquillaje -->
+                <div class="welcome-photos-collage">
+                    <div class="photo-main-arch">
+                        <img src="/imagenes_productos/ilustracion_hero_principal.svg" alt="Ilustración de tocador de maquillaje" />
+                    </div>
+                    <div class="photo-side-column">
+                        <div class="photo-small-card">
+                            <img src="/imagenes_productos/ilustracion_hero_bases.svg" alt="Ilustración de tonos de piel" />
+                        </div>
+                        <div class="photo-small-card">
+                            <img src="/imagenes_productos/ilustracion_hero_labiales.svg" alt="Ilustración de brochas y rubor" />
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Explicación visual con dibujos de qué trata la plataforma -->
+            <section class="how-it-works-section" id="comoFuncionaSection">
+                <div class="section-title-center">
+                    <h2>¿De qué trata CustomMatch?</h2>
+                    <p>Olvídate de adivinar tu tono o comprar productos que no van con tu tipo de piel.</p>
+                </div>
+
+                <div class="steps-visual-grid">
+                    <article class="step-visual-card">
+                        <div class="step-photo">
+                            <img src="/imagenes_productos/ilustracion_paso1_piel.svg" alt="Cuéntanos sobre tu piel" />
+                            <span class="step-badge">Paso 1</span>
+                        </div>
+                        <div class="step-body">
+                            <h3>Cuéntanos cómo es tu piel</h3>
+                            <p>Al registrarte respondes 4 preguntas rápidas sobre tu piel, tono y subtono. Guardamos tus datos en tu cuenta para no volver a preguntarte.</p>
+                        </div>
+                    </article>
+
+                    <article class="step-visual-card">
+                        <div class="step-photo">
+                            <img src="/imagenes_productos/ilustracion_paso2_presupuesto.svg" alt="Elige tu presupuesto" />
+                            <span class="step-badge">Paso 2</span>
+                        </div>
+                        <div class="step-body">
+                            <h3>Busca y elige tu presupuesto</h3>
+                            <p>Cada vez que busques una base, un corrector o un rubor, solo ajustas cuánto quieres gastar ese día.</p>
+                        </div>
+                    </article>
+
+                    <article class="step-visual-card">
+                        <div class="step-photo">
+                            <img src="/imagenes_productos/ilustracion_paso3_tono.svg" alt="Compra tu tono ideal" />
+                            <span class="step-badge">Paso 3</span>
+                        </div>
+                        <div class="step-body">
+                            <h3>Compra tu tono exacto</h3>
+                            <p>Mira el tono recomendado para ti y ve directo al producto en tiendas como MAC, Ani-k, Blush-Bar y Farmatodo.</p>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </div>
+
+        <!-- ===================================================================
+             VISTA 2: CATÁLOGO PERSONALIZADO (Se muestra al iniciar sesión)
+             =================================================================== -->
+        <section id="catalogoPersonalizadoSection" class="catalog-view hidden">
+            <!-- Barra limpia y compacta con los datos guardados de la usuaria -->
+            <div class="saved-profile-strip">
+                <div class="profile-strip-info">
+                    <span class="strip-title" id="profileStripTitle">Recomendaciones para Valeria</span>
+                    <div class="strip-tags">
+                        <span class="skin-tag">Piel: <strong id="savedSkinType">Mixta</strong></span>
+                        <span class="skin-tag">Tono: <strong id="savedSkinTone">Media</strong></span>
+                        <span class="skin-tag">Subtono: <strong id="savedUndertone">Oliva</strong></span>
+                        <span class="skin-tag">Cuidado: <strong id="savedConditions">Acné, Sensibilidad</strong></span>
+                    </div>
+                </div>
+                <button type="button" class="btn-outline-sm" id="btnQuickEditSkin">
+                    Cambiar mis datos
+                </button>
+            </div>
+
+            <!-- Buscador Simple e Intuitivo -->
+            <div class="clean-search-box">
+                <form id="dynamicSearchForm" class="search-row">
+                    <div class="search-field">
+                        <label for="searchInput">¿Qué producto buscas?</label>
+                        <div class="input-with-clear">
+                            <input
+                                type="text"
+                                id="searchInput"
+                                placeholder="Ej. base, corrector, rubor, MAC, Ani-k..."
+                                autocomplete="off"
+                            />
+                            <button type="button" class="btn-clear" id="btnClearSearch" title="Limpiar búsqueda">✕</button>
+                        </div>
+                    </div>
+
+                    <div class="search-field budget-field">
+                        <div class="budget-top">
+                            <label for="budgetSliderCop">Precio máximo</label>
+                            <strong id="budgetLiveDisplay">$190.000</strong>
+                        </div>
+                        <input
+                            type="range"
+                            id="budgetSliderCop"
+                            min="25000"
+                            max="200000"
+                            step="5000"
+                            value="190000"
+                        />
+                    </div>
+
+                    <div class="search-field">
+                        <label for="storeSelect">Tienda</label>
+                        <select id="storeSelect">
+                            <option value="todas">Todas las tiendas</option>
+                            <option value="MAC Cosmetics">MAC Cosmetics</option>
+                            <option value="Anik">Ani-k Makeup</option>
+                            <option value="Bloshe">Bloshe / Montoc</option>
+                            <option value="Blush-Bar">Blush-Bar</option>
+                            <option value="Farmatodo">Farmatodo</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn-primary">Buscar</button>
+                </form>
+
+                <!-- Botones de Categoría -->
+                <div class="category-chips-row">
+                    <button type="button" class="cat-chip active" data-category="todos" data-query="">Todos</button>
+                    <button type="button" class="cat-chip" data-category="Base de Maquillaje" data-query="base">Bases</button>
+                    <button type="button" class="cat-chip" data-category="Corrector" data-query="corrector">Correctores</button>
+                    <button type="button" class="cat-chip" data-category="Rubor e Iluminador" data-query="rubor">Rubores</button>
+                    <button type="button" class="cat-chip" data-category="Polvos y Fijadores" data-query="polvo">Polvos</button>
+                    <button type="button" class="cat-chip" data-category="Primer y Preparación" data-query="primer">Primers</button>
+                    <button type="button" class="cat-chip" data-category="Labios" data-query="labios">Labiales</button>
+                    <button type="button" class="cat-chip" data-category="Ojos" data-query="pestañina">Pestañinas</button>
+                </div>
+            </div>
+
+            <!-- Contador limpio -->
+            <div class="catalog-status-bar">
+                <p id="aiSearchAdviceText">Mostrando los productos que mejor se adaptan a tu piel.</p>
+                <span class="count-pill" id="resultsCounterPill">16 productos</span>
+            </div>
+
+            <!-- Grilla de Productos con Ilustraciones / Fotos -->
+            <div id="productsGrid" class="products-grid"></div>
+        </section>
+
+        <!-- ===================================================================
+             ATENCIÓN PERSONALIZADA (Con botones de WhatsApp en la paleta rosada)
+             =================================================================== -->
+        <section class="support-section" id="atencionSection">
+            <div class="support-header">
+                <div>
+                    <h2>Asesoría Personalizada</h2>
+                    <p>¿No estás segura de tu tono o necesitas ayuda para elegir? Escríbenos por WhatsApp y te guiamos paso a paso.</p>
+                </div>
+                <a
+                    href="https://wa.me/573009124580?text=Hola%20CustomMatch,%20quisiera%20asesor%C3%ADa%20personalizada%20de%20maquillaje"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn-whatsapp btn-whatsapp-lg"
+                >
+                    <svg class="icon-wa" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                    </svg>
+                    <span>WhatsApp General</span>
+                    <svg class="icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M7 17L17 7"/><path d="M8 7h9v9"/>
+                    </svg>
+                </a>
+            </div>
+
+            <!-- Tarjetas limpias de las 3 asesoras -->
+            <div class="advisors-grid" id="advisorsGrid"></div>
+        </section>
+    </main>
+
+    <footer class="simple-footer">
+        <p><strong>CustomMatch</strong> — Tu maquillaje ideal según tu piel.</p>
+    </footer>
+
+    <!-- ===================================================================
+         MODAL DE INICIAR SESIÓN Y REGISTRO PASO A PASO
+         =================================================================== -->
+    <div class="modal-backdrop hidden" id="authModalBackdrop">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3 id="authModalTitle">Bienvenida a CustomMatch</h3>
+                <button type="button" class="btn-close" id="btnCloseAuthModal">✕</button>
+            </div>
+
+            <div class="modal-tabs">
+                <button type="button" class="modal-tab" id="tabLoginBtn">Iniciar sesión</button>
+                <button type="button" class="modal-tab active" id="tabRegisterBtn">Crear cuenta</button>
+            </div>
+
+            <!-- FORMULARIO INICIAR SESIÓN -->
+            <form id="loginForm" class="modal-form hidden">
+                <p class="form-note">
+                    Ingresa con tu cuenta para ver tus recomendaciones sin volver a responder el cuestionario.
+                </p>
+                <div class="field">
+                    <label for="loginEmail">Correo electrónico</label>
+                    <input type="email" id="loginEmail" value="valeria@leclat.co" required />
+                </div>
+                <div class="field">
+                    <label for="loginPassword">Contraseña</label>
+                    <input type="password" id="loginPassword" value="belleza123" required />
+                </div>
+                <div id="loginErrorMsg" class="error-box hidden"></div>
+                <button type="submit" class="btn-primary full-width">
+                    <span>Entrar a mi cuenta</span>
+                    <svg class="icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12h14"/><path d="m13 6 6 6-6 6"/>
+                    </svg>
+                </button>
+            </form>
+
+            <!-- FORMULARIO REGISTRO (Paso 1: Explicación -> Paso 2: Cuenta -> Paso 3: Cuestionario de Piel) -->
+            <form id="registerForm" class="modal-form">
+                <div class="steps-bar">
+                    <span class="step-dot active" id="wizIndicator1">1. Bienvenida</span>
+                    <span class="step-dot" id="wizIndicator2">2. Tu cuenta</span>
+                    <span class="step-dot" id="wizIndicator3">3. Tu piel</span>
+                </div>
+
+                <!-- Paso 1: Breve explicación antes del cuestionario -->
+                <div id="regStep1Explanation" class="wizard-step">
+                    <div class="welcome-mini-box">
+                        <h4>¿Cómo funciona tu cuenta?</h4>
+                        <ul class="simple-benefits-list">
+                            <li><strong>1. Conocemos tu piel:</strong> En el siguiente paso nos cuentas tu tipo de piel, tono y subtono una sola vez.</li>
+                            <li><strong>2. Guardamos tu perfil:</strong> Tus datos quedan guardados en tu cuenta para que no tengas que responder de nuevo.</li>
+                            <li><strong>3. Recomendación a tu medida:</strong> Cada vez que busques un producto solo eliges tu presupuesto y te mostramos tu tono ideal.</li>
+                        </ul>
+                    </div>
+                    <button type="button" class="btn-primary full-width" id="btnStep1ToStep2">
+                        <span>Continuar con mi registro</span>
+                        <svg class="icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12h14"/><path d="m13 6 6 6-6 6"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Paso 2: Datos básicos de la cuenta -->
+                <div id="regStep2Account" class="wizard-step hidden">
+                    <div class="grid-2">
+                        <div class="field">
+                            <label for="regName">Tu nombre</label>
+                            <input type="text" id="regName" placeholder="Ej. Camila Restrepo" required />
+                        </div>
+                        <div class="field">
+                            <label for="regCity">Ciudad</label>
+                            <input type="text" id="regCity" value="Medellín" required />
+                        </div>
+                    </div>
+                    <div class="grid-2">
+                        <div class="field">
+                            <label for="regEmail">Correo electrónico</label>
+                            <input type="email" id="regEmail" placeholder="camila@correo.com" required />
+                        </div>
+                        <div class="field">
+                            <label for="regPassword">Contraseña</label>
+                            <input type="password" id="regPassword" value="belleza123" required />
+                        </div>
+                    </div>
+                    <div id="step2ValidationMsg" class="error-box hidden"></div>
+                    <div class="modal-actions">
+                        <button type="button" class="btn-outline" id="btnBackToStep1">
+                            <svg class="icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M19 12H5"/><path d="m11 18-6-6 6-6"/>
+                            </svg>
+                            <span>Atrás</span>
+                        </button>
+                        <button type="button" class="btn-primary" id="btnStep2ToStep3">
+                            <span>Ir al cuestionario de piel</span>
+                            <svg class="icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 12h14"/><path d="m13 6 6 6-6 6"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Paso 3: Cuestionario de la piel -->
+                <div id="regStep3SkinQuiz" class="wizard-step hidden">
+                    <div class="grid-3">
+                        <div class="field">
+                            <label for="regSkinType">Tipo de piel</label>
+                            <select id="regSkinType">
+                                <option value="mixta" selected>Mixta</option>
+                                <option value="grasa">Grasa</option>
+                                <option value="seca">Seca</option>
+                                <option value="normal">Normal</option>
+                            </select>
+                        </div>
+                        <div class="field">
+                            <label for="regSkinTone">Tono de piel</label>
+                            <select id="regSkinTone">
+                                <option value="clara">Clara</option>
+                                <option value="media" selected>Media / Trigueña</option>
+                                <option value="bronceada">Bronceada</option>
+                                <option value="profunda">Profunda</option>
+                            </select>
+                        </div>
+                        <div class="field">
+                            <label for="regUndertone">Subtono</label>
+                            <select id="regUndertone">
+                                <option value="oliva" selected>Oliva</option>
+                                <option value="calido">Cálido / Dorado</option>
+                                <option value="frio">Frío / Rosado</option>
+                                <option value="neutro">Neutro</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label>¿Qué necesita cuidar tu piel?</label>
+                        <div class="checks-row" id="regConditionsGroup">
+                            <label class="check-item"><input type="checkbox" value="acne" checked /> Acné / Brotes</label>
+                            <label class="check-item"><input type="checkbox" value="sensibilidad" checked /> Sensibilidad</label>
+                            <label class="check-item"><input type="checkbox" value="rosacea" /> Rojeces</label>
+                            <label class="check-item"><input type="checkbox" value="poros" /> Poros visibles</label>
+                            <label class="check-item"><input type="checkbox" value="ninguna" /> Ninguna</label>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label for="regMaxPrice">Presupuesto inicial aproximado</label>
+                        <input type="number" id="regMaxPrice" value="160000" min="25000" max="250000" step="5000" />
+                    </div>
+
+                    <div id="registerErrorMsg" class="error-box hidden"></div>
+
+                    <div class="modal-actions">
+                        <button type="button" class="btn-outline" id="btnBackToStep2">
+                            <svg class="icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M19 12H5"/><path d="m11 18-6-6 6-6"/>
+                            </svg>
+                            <span>Atrás</span>
+                        </button>
+                        <button type="submit" class="btn-primary">
+                            <span>Guardar y ver mis productos</span>
+                            <svg class="icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 12h14"/><path d="m13 6 6 6-6 6"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL PARA EDITAR DATOS DE PIEL -->
+    <div class="modal-backdrop hidden" id="editSkinModalBackdrop">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3>Mis datos de piel</h3>
+                <button type="button" class="btn-close" id="btnCloseEditSkinModal">✕</button>
+            </div>
+
+            <form id="updateSkinForm" class="modal-form">
+                <div class="grid-3">
+                    <div class="field">
+                        <label for="editSkinType">Tipo de piel</label>
+                        <select id="editSkinType">
+                            <option value="mixta">Mixta</option>
+                            <option value="grasa">Grasa</option>
+                            <option value="seca">Seca</option>
+                            <option value="normal">Normal</option>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label for="editSkinTone">Tono de piel</label>
+                        <select id="editSkinTone">
+                            <option value="clara">Clara</option>
+                            <option value="media">Media / Trigueña</option>
+                            <option value="bronceada">Bronceada</option>
+                            <option value="profunda">Profunda</option>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label for="editUndertone">Subtono</label>
+                        <select id="editUndertone">
+                            <option value="oliva">Oliva</option>
+                            <option value="calido">Cálido / Dorado</option>
+                            <option value="frio">Frío / Rosado</option>
+                            <option value="neutro">Neutro</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label>Cuidado de tu piel</label>
+                    <div class="checks-row" id="editConditionsGroup">
+                        <label class="check-item"><input type="checkbox" value="acne" /> Acné / Brotes</label>
+                        <label class="check-item"><input type="checkbox" value="sensibilidad" /> Sensibilidad</label>
+                        <label class="check-item"><input type="checkbox" value="rosacea" /> Rojeces</label>
+                        <label class="check-item"><input type="checkbox" value="poros" /> Poros visibles</label>
+                        <label class="check-item"><input type="checkbox" value="ninguna" /> Ninguna</label>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-primary full-width">Guardar cambios</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="/logica_interfaz.js"></script>
+</body>
+</html>

@@ -1,0 +1,1088 @@
+:root {
+    --bg-main: #fdf8f6;
+    --bg-soft: #f9ecef;
+    --white: #ffffff;
+    --border: #f0d8df;
+    --rose: #c95b72;
+    --rose-dark: #a64258;
+    --rose-pale: #fdeef1;
+    --peach-soft: #fcebe6;
+    --text-dark: #2c1a1f;
+    --text-muted: #755b63;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    accent-color: var(--rose);
+    -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+    background: #f8ced8;
+    color: var(--rose-dark);
+}
+
+a, button, input, select, textarea {
+    outline: none;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: none;
+    border-color: var(--rose) !important;
+    box-shadow: 0 0 0 3px rgba(201, 91, 114, 0.22);
+}
+
+/* Evitar el fondo azul de autocompletado del navegador */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+select:-webkit-autofill {
+    -webkit-text-fill-color: var(--text-dark);
+    -webkit-box-shadow: 0 0 0px 1000px var(--bg-main) inset !important;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-dark);
+    font-family: 'DM Sans', sans-serif;
+    line-height: 1.55;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Iconos SVG de flechas y chat */
+.icon-arrow {
+    width: 17px;
+    height: 17px;
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
+}
+
+.icon-wa {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+
+/* Barra de Navegación Juvenil */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 3.5rem;
+    background: rgba(255, 255, 255, 0.92);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    backdrop-filter: blur(12px);
+}
+
+.brand-logo {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.75rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: var(--text-dark);
+    text-decoration: none;
+}
+
+.brand-logo span {
+    color: var(--rose);
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-size: 0.94rem;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.nav-links a:hover {
+    color: var(--rose);
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+}
+
+.user-greeting {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-right: 0.3rem;
+}
+
+/* Botones Generales Juveniles */
+.btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background: var(--rose);
+    color: var(--white);
+    border: none;
+    padding: 0.68rem 1.35rem;
+    border-radius: 999px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.92rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.18s;
+}
+
+.btn-primary:hover {
+    background: var(--rose-dark);
+    transform: translateY(-1px);
+}
+
+.btn-primary:hover .icon-arrow {
+    transform: translateX(3px);
+}
+
+.btn-outline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    background: var(--white);
+    color: var(--text-dark);
+    border: 1.5px solid var(--border);
+    padding: 0.66rem 1.3rem;
+    border-radius: 999px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.92rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
+}
+
+.btn-outline:hover {
+    border-color: var(--rose);
+    color: var(--rose);
+}
+
+.btn-outline-sm {
+    background: var(--white);
+    color: var(--rose);
+    border: 1.5px solid var(--border);
+    padding: 0.48rem 1.05rem;
+    border-radius: 999px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-logout {
+    background: var(--rose-pale);
+    color: var(--rose-dark);
+    border: 1px solid var(--border);
+    padding: 0.52rem 1.05rem;
+    border-radius: 999px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.84rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-logout:hover {
+    background: #f9d8e0;
+}
+
+.btn-lg {
+    padding: 0.88rem 1.75rem;
+    font-size: 0.98rem;
+}
+
+/* Botón de WhatsApp integrado en la colorimetría rosada/berry de la página */
+.btn-whatsapp {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    background: linear-gradient(135deg, var(--rose) 0%, var(--rose-dark) 100%);
+    color: var(--white);
+    text-decoration: none;
+    padding: 0.72rem 1.35rem;
+    border-radius: 999px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    box-shadow: 0 8px 20px rgba(201, 91, 114, 0.22);
+    transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
+}
+
+.btn-whatsapp:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(166, 66, 88, 0.32);
+    filter: brightness(1.04);
+}
+
+.btn-whatsapp:hover .icon-arrow {
+    transform: translate(2px, -2px);
+}
+
+.btn-whatsapp-lg {
+    padding: 0.85rem 1.55rem;
+    font-size: 0.95rem;
+}
+
+.main-container {
+    max-width: 1220px;
+    margin: 0 auto;
+    padding: 2.2rem 2rem 4rem;
+}
+
+/* =========================================================
+   PORTADA DE BIENVENIDA CON ILUSTRACIONES JUVENILES
+   ========================================================= */
+.welcome-hero {
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: 2.8rem;
+    align-items: center;
+    background: linear-gradient(135deg, #fdeef1 0%, #fce8e2 100%);
+    border: 1.5px solid var(--border);
+    border-radius: 34px;
+    padding: 2.8rem 3.1rem;
+    margin-bottom: 3.5rem;
+}
+
+.soft-tag {
+    display: inline-block;
+    background: var(--white);
+    color: var(--rose);
+    padding: 0.38rem 1rem;
+    border-radius: 999px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 12px rgba(201, 91, 114, 0.08);
+}
+
+.welcome-text h1 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 3.15rem;
+    line-height: 1.1;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.05rem;
+    color: var(--text-dark);
+}
+
+.welcome-text h1 span {
+    color: var(--rose);
+}
+
+.welcome-text p {
+    font-size: 1.04rem;
+    color: var(--text-muted);
+    margin-bottom: 1.75rem;
+    max-width: 490px;
+}
+
+.welcome-buttons {
+    display: flex;
+    gap: 0.85rem;
+    flex-wrap: wrap;
+}
+
+/* Collage de Ilustraciones */
+.welcome-photos-collage {
+    display: grid;
+    grid-template-columns: 1.25fr 0.95fr;
+    gap: 1rem;
+    align-items: stretch;
+}
+
+.photo-main-arch {
+    border-radius: 135px 135px 26px 26px;
+    overflow: hidden;
+    height: 380px;
+    background: var(--white);
+    box-shadow: 0 16px 36px rgba(201, 91, 114, 0.14);
+    border: 4px solid var(--white);
+}
+
+.photo-main-arch img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.photo-side-column {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.photo-small-card {
+    border-radius: 24px;
+    overflow: hidden;
+    height: 182px;
+    background: var(--white);
+    box-shadow: 0 12px 26px rgba(201, 91, 114, 0.1);
+    border: 3.5px solid var(--white);
+}
+
+.photo-small-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* SECCIÓN DE QUÉ TRATA LA PLATAFORMA (3 PASOS ILUSTRADOS) */
+.how-it-works-section {
+    margin-bottom: 4rem;
+}
+
+.section-title-center {
+    text-align: center;
+    margin-bottom: 2.2rem;
+}
+
+.section-title-center h2 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.4rem;
+}
+
+.section-title-center p {
+    color: var(--text-muted);
+    font-size: 0.98rem;
+}
+
+.steps-visual-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.step-visual-card {
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: 26px;
+    overflow: hidden;
+    transition: transform 0.2s ease;
+}
+
+.step-visual-card:hover {
+    transform: translateY(-4px);
+}
+
+.step-photo {
+    height: 190px;
+    position: relative;
+    overflow: hidden;
+}
+
+.step-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.step-badge {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    background: var(--white);
+    color: var(--rose);
+    padding: 0.3rem 0.85rem;
+    border-radius: 999px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+}
+
+.step-body {
+    padding: 1.35rem 1.45rem 1.55rem;
+}
+
+.step-body h3 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 0.45rem;
+}
+
+.step-body p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+/* =========================================================
+   VISTA DEL CATÁLOGO PERSONALIZADO
+   ========================================================= */
+.catalog-view {
+    margin-bottom: 4rem;
+}
+
+.saved-profile-strip {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: 22px;
+    padding: 1.1rem 1.5rem;
+    margin-bottom: 1.35rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.profile-strip-info {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.1rem;
+}
+
+.strip-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.35rem;
+    font-weight: 700;
+}
+
+.strip-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.skin-tag {
+    background: var(--rose-pale);
+    color: var(--text-dark);
+    padding: 0.35rem 0.85rem;
+    border-radius: 999px;
+    font-size: 0.82rem;
+}
+
+.skin-tag strong {
+    color: var(--rose);
+    text-transform: capitalize;
+}
+
+/* Buscador Limpio */
+.clean-search-box {
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: 24px;
+    padding: 1.45rem 1.65rem;
+    margin-bottom: 1.35rem;
+}
+
+.search-row {
+    display: grid;
+    grid-template-columns: 1.4fr 1.2fr 1fr auto;
+    gap: 1.05rem;
+    align-items: end;
+    margin-bottom: 1.05rem;
+}
+
+.search-field label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    margin-bottom: 0.35rem;
+}
+
+.input-with-clear {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-with-clear input,
+.search-field select,
+.field input,
+.field select {
+    width: 100%;
+    padding: 0.7rem 0.95rem;
+    border-radius: 14px;
+    border: 1.5px solid var(--border);
+    background: var(--bg-main);
+    font-size: 0.9rem;
+    font-family: inherit;
+    color: var(--text-dark);
+    outline: none;
+}
+
+.input-with-clear input:focus,
+.search-field select:focus,
+.field input:focus,
+.field select:focus {
+    border-color: var(--rose);
+}
+
+.btn-clear {
+    position: absolute;
+    right: 0.65rem;
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+}
+
+.budget-field {
+    background: var(--rose-pale);
+    padding: 0.6rem 0.95rem;
+    border-radius: 14px;
+}
+
+.budget-top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.25rem;
+}
+
+.budget-top label {
+    margin-bottom: 0;
+    color: var(--text-dark);
+}
+
+.budget-top strong {
+    font-family: 'Outfit', sans-serif;
+    color: var(--rose);
+    font-size: 0.96rem;
+}
+
+input[type="range"] {
+    width: 100%;
+    accent-color: var(--rose);
+    cursor: pointer;
+}
+
+.category-chips-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding-top: 0.9rem;
+    border-top: 1px solid var(--border);
+}
+
+.cat-chip {
+    background: var(--bg-main);
+    border: 1px solid var(--border);
+    color: var(--text-dark);
+    padding: 0.42rem 0.95rem;
+    border-radius: 999px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.84rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.18s;
+}
+
+.cat-chip.active,
+.cat-chip:hover {
+    background: var(--rose);
+    border-color: var(--rose);
+    color: var(--white);
+}
+
+.catalog-status-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.2rem;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.count-pill {
+    background: var(--rose-pale);
+    color: var(--rose-dark);
+    padding: 0.32rem 0.9rem;
+    border-radius: 999px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 700;
+}
+
+/* Tarjetas de Producto Juveniles */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(285px, 1fr));
+    gap: 1.45rem;
+}
+
+.product-card {
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: 24px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 30px rgba(201, 91, 114, 0.12);
+}
+
+.product-photo-wrap {
+    height: 230px;
+    position: relative;
+    background: #f9ebe6;
+    overflow: hidden;
+}
+
+.product-photo-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.store-tag-badge {
+    position: absolute;
+    bottom: 10px;
+    left: 12px;
+    background: rgba(44, 26, 31, 0.84);
+    color: var(--white);
+    padding: 0.24rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.72rem;
+    font-weight: 600;
+}
+
+.product-info {
+    padding: 1.2rem 1.3rem 1.35rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex: 1;
+}
+
+.product-brand {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--rose);
+    font-weight: 700;
+}
+
+.product-name {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.18rem;
+    line-height: 1.28;
+    font-weight: 700;
+}
+
+.shade-pill {
+    background: var(--rose-pale);
+    color: var(--rose-dark);
+    padding: 0.42rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.product-desc {
+    font-size: 0.84rem;
+    color: var(--text-muted);
+    flex: 1;
+}
+
+.product-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 0.8rem;
+    border-top: 1px solid var(--border);
+    margin-top: 0.3rem;
+}
+
+.product-price {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.18rem;
+    font-weight: 800;
+}
+
+.btn-product-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    background: var(--rose);
+    color: var(--white);
+    text-decoration: none;
+    padding: 0.52rem 1rem;
+    border-radius: 999px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+    transition: background 0.2s;
+}
+
+.btn-product-link:hover {
+    background: var(--rose-dark);
+}
+
+/* =========================================================
+   ASESORÍA PERSONALIZADA (CON BOTONES ROSA/BERRY)
+   ========================================================= */
+.support-section {
+    background: linear-gradient(135deg, #fdeef1 0%, #fcebe6 100%);
+    border: 1.5px solid var(--border);
+    border-radius: 30px;
+    padding: 2.4rem;
+}
+
+.support-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+    margin-bottom: 1.8rem;
+}
+
+.support-header h2 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.95rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.25rem;
+}
+
+.support-header p {
+    color: var(--text-muted);
+    font-size: 0.94rem;
+}
+
+.advisors-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+}
+
+.advisor-card {
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: 22px;
+    padding: 1.4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1.05rem;
+}
+
+.advisor-top {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+}
+
+.advisor-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    color: var(--white);
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.advisor-name {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+}
+
+.advisor-city {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+}
+
+.advisor-role {
+    font-size: 0.86rem;
+    color: var(--text-muted);
+}
+
+.simple-footer {
+    text-align: center;
+    padding: 1.8rem;
+    border-top: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: 0.86rem;
+}
+
+/* =========================================================
+   MODALES JUVENILES
+   ========================================================= */
+.modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(44, 26, 31, 0.45);
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.2rem;
+    z-index: 100;
+}
+
+.modal-box {
+    background: var(--white);
+    border-radius: 26px;
+    width: 100%;
+    max-width: 550px;
+    padding: 1.8rem 2rem;
+    box-shadow: 0 20px 50px rgba(44, 26, 31, 0.18);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.modal-header h3 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+
+.btn-close {
+    background: transparent;
+    border: none;
+    font-size: 1.15rem;
+    color: var(--text-muted);
+    cursor: pointer;
+}
+
+.modal-tabs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    margin-bottom: 1.2rem;
+}
+
+.modal-tab {
+    padding: 0.62rem;
+    border-radius: 999px;
+    border: 1.5px solid var(--border);
+    background: var(--bg-main);
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    font-size: 0.86rem;
+    cursor: pointer;
+}
+
+.modal-tab.active {
+    background: var(--rose);
+    border-color: var(--rose);
+    color: var(--white);
+}
+
+.modal-form,
+.wizard-step {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+}
+
+.steps-bar {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.4rem;
+    margin-bottom: 0.4rem;
+}
+
+.step-dot {
+    text-align: center;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.78rem;
+    padding: 0.42rem;
+    border-radius: 10px;
+    background: var(--bg-main);
+    color: var(--text-muted);
+}
+
+.step-dot.active {
+    background: var(--rose-pale);
+    color: var(--rose);
+    font-weight: 700;
+}
+
+.welcome-mini-box {
+    background: var(--bg-main);
+    border: 1.5px solid var(--border);
+    border-radius: 18px;
+    padding: 1.2rem;
+}
+
+.welcome-mini-box h4 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.6rem;
+}
+
+.simple-benefits-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+    font-size: 0.88rem;
+    color: var(--text-muted);
+}
+
+.simple-benefits-list strong {
+    color: var(--text-dark);
+}
+
+.form-note {
+    font-size: 0.86rem;
+    color: var(--text-muted);
+}
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.8rem;
+}
+
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.7rem;
+}
+
+.field label {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    margin-bottom: 0.3rem;
+}
+
+.checks-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+}
+
+.check-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    background: var(--bg-main);
+    border: 1.5px solid var(--border);
+    padding: 0.42rem 0.85rem;
+    border-radius: 999px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.18s ease;
+    user-select: none;
+}
+
+.check-item input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    border: 1.8px solid #d7adb8;
+    border-radius: 5px;
+    background: var(--white);
+    display: inline-grid;
+    place-content: center;
+    cursor: pointer;
+    margin: 0;
+    transition: all 0.15s ease;
+}
+
+.check-item input[type="checkbox"]::before {
+    content: "";
+    width: 9px;
+    height: 9px;
+    transform: scale(0);
+    transition: transform 0.15s ease-in-out;
+    box-shadow: inset 1em 1em var(--white);
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+}
+
+.check-item input[type="checkbox"]:checked {
+    background: var(--rose);
+    border-color: var(--rose);
+}
+
+.check-item input[type="checkbox"]:checked::before {
+    transform: scale(1);
+}
+
+.check-item:has(input:checked) {
+    background: var(--rose-pale);
+    border-color: var(--rose);
+    color: var(--rose-dark);
+    font-weight: 600;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.4rem;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.error-box {
+    background: var(--rose-pale);
+    color: var(--rose-dark);
+    padding: 0.55rem 0.8rem;
+    border-radius: 10px;
+    font-size: 0.82rem;
+    font-weight: 600;
+}
+
+@media (max-width: 920px) {
+    .welcome-hero,
+    .steps-visual-grid,
+    .search-row,
+    .advisors-grid,
+    .grid-3 {
+        grid-template-columns: 1fr;
+    }
+    .navbar {
+        padding: 1rem 1.2rem;
+        flex-wrap: wrap;
+        gap: 0.7rem;
+    }
+}

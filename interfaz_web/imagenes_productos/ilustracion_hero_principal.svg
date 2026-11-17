@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 560" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fdeef1"/>
+      <stop offset="50%" stop-color="#f9dfe5"/>
+      <stop offset="100%" stop-color="#f4d5cb"/>
+    </linearGradient>
+    <linearGradient id="mirrorGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#fce8ed"/>
+    </linearGradient>
+  </defs>
+  <rect width="520" height="560" fill="url(#bgGrad)"/>
+
+  <!-- Ondas decorativas suaves de fondo -->
+  <circle cx="420" cy="110" r="95" fill="#f7cad3" opacity="0.55"/>
+  <circle cx="95" cy="430" r="110" fill="#f5cbbd" opacity="0.5"/>
+
+  <!-- Espejo arqueado de tocador -->
+  <path d="M135,440 L135,195 A125,125 0 0,1 385,195 L385,440 Z" fill="url(#mirrorGrad)" stroke="#d97b8f" stroke-width="6"/>
+  <path d="M152,425 L152,198 A108,108 0 0,1 368,198 L368,425 Z" fill="none" stroke="#f3c6d0" stroke-width="3" stroke-dasharray="8 6"/>
+
+  <!-- Reflejos diagonales del espejo -->
+  <line x1="190" y1="150" x2="250" y2="95" stroke="#ffffff" stroke-width="6" stroke-linecap="round"/>
+  <line x1="210" y1="165" x2="245" y2="132" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/>
+
+  <!-- Swatches / Trazos cremosos de base y rubor ilustrados -->
+  <path d="M170,260 Q220,230 265,260 T350,255" fill="none" stroke="#d7a384" stroke-width="26" stroke-linecap="round" opacity="0.85"/>
+  <path d="M180,305 Q230,280 275,305 T340,300" fill="none" stroke="#e58c9e" stroke-width="22" stroke-linecap="round" opacity="0.85"/>
+
+  <!-- Ilustración de Frasco de Base (Centro-Izquierda) -->
+  <g transform="translate(155, 250)">
+    <rect x="28" y="0" width="34" height="40" rx="8" fill="#3a2328"/>
+    <rect x="37" y="40" width="16" height="12" fill="#e5b899"/>
+    <rect x="8" y="50" width="74" height="145" rx="20" fill="#d9a583" stroke="#3a2328" stroke-width="4"/>
+    <rect x="18" y="62" width="10" height="118" rx="5" fill="#ffffff" opacity="0.45"/>
+    <rect x="18" y="88" width="54" height="68" rx="10" fill="#fff8f6" stroke="#3a2328" stroke-width="3"/>
+    <circle cx="45" cy="112" r="10" fill="#c95b72"/>
+    <line x1="30" y1="136" x2="60" y2="136" stroke="#3a2328" stroke-width="3.5" stroke-linecap="round"/>
+  </g>
+
+  <!-- Ilustración de Labial Abierto (Centro-Derecha) -->
+  <g transform="translate(268, 285)">
+    <path d="M22,48 L22,14 Q38,-6 54,12 L54,48 Z" fill="#c94a66" stroke="#3a2328" stroke-width="4" stroke-linejoin="round"/>
+    <rect x="16" y="46" width="44" height="28" rx="4" fill="#f6d0b8" stroke="#3a2328" stroke-width="4"/>
+    <rect x="10" y="72" width="56" height="88" rx="12" fill="#3a2328"/>
+    <rect x="20" y="84" width="8" height="62" rx="4" fill="#ffffff" opacity="0.28"/>
+  </g>
+
+  <!-- Ilustración de Esponja Beauty Blender Rosada -->
+  <g transform="translate(95, 375)">
+    <path d="M40,0 C62,18 76,48 72,74 C68,98 48,110 40,110 C32,110 12,98 8,74 C4,48 18,18 40,0 Z" fill="#eb7b93" stroke="#3a2328" stroke-width="4"/>
+    <ellipse cx="28" cy="55" rx="6" ry="15" fill="#ffffff" opacity="0.4" transform="rotate(-12 28 55)"/>
+  </g>
+
+  <!-- Ilustración de Estuche de Rubor con Corazón -->
+  <g transform="translate(335, 370)">
+    <circle cx="52" cy="52" r="48" fill="#f9c2cd" stroke="#3a2328" stroke-width="4"/>
+    <circle cx="52" cy="52" r="35" fill="#d9657e" stroke="#3a2328" stroke-width="3"/>
+    <path d="M52,65 C52,65 34,53 34,42 C34,35 40,31 46,35 C49,37 52,41 52,41 C52,41 55,37 58,35 C64,31 70,35 70,42 C70,53 52,65 52,65 Z" fill="#fdeef1"/>
+  </g>
+
+  <!-- Destellos juveniles (Sparkles) -->
+  <path d="M105,140 Q105,165 80,165 Q105,165 105,190 Q105,165 130,165 Q105,165 105,140 Z" fill="#c95b72"/>
+  <path d="M425,180 Q425,198 407,198 Q425,198 425,216 Q425,198 443,198 Q425,198 425,180 Z" fill="#d98a6c"/>
+  <circle cx="260" cy="65" r="7" fill="#c95b72"/>
+</svg>

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 310" width="100%" height="100%">
+    <defs>
+        <radialGradient id="studioBg" cx="50%" cy="42%" r="65%">
+            <stop offset="0%" stop-color="#f7e8ee"/>
+            <stop offset="100%" stop-color="#dbb8c5"/>
+        </radialGradient>
+        <linearGradient id="bottleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#d896ac"/>
+            <stop offset="100%" stop-color="#a8647b"/>
+        </linearGradient>
+    </defs>
+    <!-- Fondo de Estudio Fotográfico -->
+    <rect width="400" height="310" fill="url(#studioBg)"/>
+    <!-- Pedestal de estudio cosmético -->
+    <ellipse cx="200" cy="284" rx="126" ry="18" fill="rgba(255,255,255,0.45)"/>
+    <!-- Muestra de textura / Swatch del tono a la derecha -->
+    <circle cx="326" cy="236" r="28" fill="#1f1b1c" stroke="#ffffff" stroke-width="3"/>
+    <text x="326" y="278" text-anchor="middle" font-family="Arial, sans-serif" font-size="8.5" font-weight="bold" fill="#3a2830">TONO REAL</text>
+    
+        <ellipse cx="200" cy="284" rx="58" ry="11" fill="rgba(0,0,0,0.22)" />
+        <!-- Tubo metálico rosado Sky High -->
+        <rect x="166" y="34" width="68" height="242" rx="14" fill="url(#bottleGrad)" stroke="rgba(255,255,255,0.6)" stroke-width="2"/>
+        <rect x="174" y="42" width="12" height="226" rx="6" fill="rgba(255,255,255,0.38)"/>
+        <line x1="166" y1="108" x2="234" y2="108" stroke="#ffffff" stroke-width="2.5"/>
+        <text x="200" y="152" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#181014" letter-spacing="1.5">MAYBELLINE</text>
+        <text x="200" y="182" text-anchor="middle" font-family="Impact, Arial Black, sans-serif" font-size="17" font-weight="bold" fill="#181014" letter-spacing="2">SKY HIGH</text>
+        <text x="200" y="206" text-anchor="middle" font-family="Arial, sans-serif" font-size="7" font-weight="bold" fill="#422631">LASH SENSATIONAL + AGE REWIND</text>
+        
+</svg>

@@ -1,0 +1,16 @@
+# Variables de entorno y credenciales sensibles (NUNCA subir a GitHub)
+.env
+*.env
+!.env.example
+
+# Archivos de respaldo local de usuarias y solicitudes en tiempo de ejecución
+servicios/gestion_usuarias/respaldo_usuarias.json
+servicios/atencion_cliente/respaldo_solicitudes.json
+
+# Caché de Python y entornos virtuales
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240" width="100%" height="100%">
+  <rect width="400" height="240" fill="#fcf0ea"/>
+  <!-- Tarjeta de control deslizante de presupuesto ilustrada -->
+  <rect x="65" y="48" width="270" height="144" rx="26" fill="#ffffff" stroke="#3a2328" stroke-width="3.5"/>
+  <!-- Barra slider ilustrada -->
+  <rect x="100" y="108" width="200" height="16" rx="8" fill="#f6dde3" stroke="#3a2328" stroke-width="3"/>
+  <rect x="100" y="108" width="135" height="16" rx="8" fill="#d95b76" stroke="#3a2328" stroke-width="3"/>
+  <circle cx="235" cy="116" r="20" fill="#ffffff" stroke="#3a2328" stroke-width="4"/>
+  <circle cx="235" cy="116" r="8" fill="#d95b76"/>
+  <!-- Etiqueta de precio amigable -->
+  <rect x="145" y="64" width="110" height="28" rx="14" fill="#fdeef1" stroke="#d95b76" stroke-width="2.5"/>
+  <text x="200" y="83" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#b8425c">Tu Presupuesto</text>
+  <!-- Iconos decorativos -->
+  <circle cx="120" cy="158" r="10" fill="#f4b6c2"/>
+  <circle cx="155" cy="158" r="10" fill="#e5a98c"/>
+  <circle cx="190" cy="158" r="10" fill="#d95b76"/>
+</svg>

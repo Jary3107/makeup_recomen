@@ -1,0 +1,7 @@
+# Dependencias opcionales para despliegue en contenedores Docker / Kubernetes
+# Nota: El orquestador local también puede ejecutarse directamente con la librería estándar de Python 3.12+
+pika>=1.3.2
+redis>=5.0.1
+psycopg2-binary>=2.9.9
+grpcio>=1.62.0
+protobuf>=4.25.3

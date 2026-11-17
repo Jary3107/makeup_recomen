@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 260" width="100%" height="100%">
+  <rect width="360" height="260" fill="#fde9ee"/>
+  <circle cx="70" cy="200" r="70" fill="#f8ced8" opacity="0.65"/>
+  <!-- Brocha de maquillaje ilustrada -->
+  <g transform="translate(85, 35) rotate(28 90 90)">
+    <path d="M60,0 Q90,-18 120,0 L112,58 L68,58 Z" fill="#e56b85" stroke="#3a2328" stroke-width="3.5" stroke-linejoin="round"/>
+    <path d="M60,0 Q90,-12 120,0 L117,22 Q90,14 63,22 Z" fill="#f9c8d3"/>
+    <rect x="68" y="56" width="44" height="26" rx="4" fill="#f5cfa8" stroke="#3a2328" stroke-width="3.5"/>
+    <rect x="73" y="80" width="34" height="105" rx="16" fill="#3a2328"/>
+  </g>
+  <!-- Nube de rubor suave -->
+  <circle cx="245" cy="115" r="42" fill="#ea7a93" opacity="0.35"/>
+  <circle cx="245" cy="115" r="26" fill="#d95874" stroke="#3a2328" stroke-width="3.5"/>
+  <path d="M75,55 Q75,72 58,72 Q75,72 75,89 Q75,72 92,72 Q75,72 75,55 Z" fill="#c95b72"/>
+</svg>
