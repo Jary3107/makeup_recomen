@@ -24,7 +24,7 @@ class PruebasSistemaCustomMatchColombia(unittest.TestCase):
         })
         self.assertEqual(res["skin_type"], "mixta")
         self.assertEqual(res["undertone"], "oliva")
-        self.assertEqual(res["vertex_project"], "projects/388824298555")
+        self.assertNotIn("api_key", res)
         self.assertTrue(len(res["ai_skin_summary"]) > 20)
 
     def test_inicio_sesion_recupera_datos_guardados(self):

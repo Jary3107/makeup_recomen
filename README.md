@@ -1,6 +1,6 @@
 ## Recomendación de Maquillaje según tu Piel
 
-Plataforma distribuida de recomendación dermocosmética y catálogo de maquillaje en Colombia conectada a TiDB Cloud  y Google AI .
+Plataforma distribuida de recomendación dermocosmética y catálogo de maquillaje en Colombia conectada a TiDB Cloud y Google AI.
 
 ## Estructura de Carpetas 
 
@@ -16,5 +16,6 @@ Plataforma distribuida de recomendación dermocosmética y catálogo de maquilla
   - `inteligencia_artificial/agente_recomendador.py`: Agente de IA para análisis de tipo de piel, tono, subtono y condiciones.
   - `catalogo_maquillaje/catalogo_colombia.py`: Productos en tiendas de Colombia (**MAC Cosmetics, Anik, Bloshe, Blush-Bar y Farmatodo**) con fotos, precios en `$ COP` y enlaces directos al producto.
   - `gestion_usuarias/servicio_usuarias.py`: Registro e inicio de sesión guardando los datos de la usuaria en TiDB Cloud para no volver a preguntar el cuestionario.
+  - `atencion_cliente/servicio_atencion.py`: Servicio de atención personalizada con asesoras y botones a WhatsApp.
   - `servidor_principal/servidor_api.py`: Orquestador principal de la aplicación.
 - **`pruebas/pruebas_sistema.py`**: Pruebas unitarias y de integración.

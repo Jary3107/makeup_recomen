@@ -292,11 +292,7 @@ class ManejadorSolicitudesHTTP(BaseHTTPRequestHandler):
             self._enviar_json(200, {
                 "platform": "CustomMatch Colombia",
                 "status": "HEALTHY",
-                "tidb_cloud": conexion_tidb.obtener_estado(),
-                "ai_api": {
-                    "vertex_project": orquestador.agente_ia.vertex_project,
-                    "api_key_configured": True
-                }
+                "tidb_cloud": conexion_tidb.obtener_estado()
             })
         else:
             self.send_error(404, "Ruta no encontrada")

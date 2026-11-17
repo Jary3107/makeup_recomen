@@ -1,7 +1,11 @@
 """
 Agente de Inteligencia Artificial para Diagnóstico de Piel y Recomendación de Maquillaje.
-Lee el proyecto y la clave de API exclusivamente desde variables de entorno (`.env`)
-para no exponer secretos en el control de versiones.
+Seguridad y Ahorro de Tokens:
+1. La clave `AI_API_KEY` y el proyecto `VERTEX_PROJECT` se leen únicamente desde `.env`
+   (archivo local excluido de GitHub por `.gitignore`).
+2. Nunca se expone la clave ni el ID del proyecto en respuestas JSON hacia el navegador.
+3. Incluye caché en memoria (`_cache_diagnosticos`) y límite de llamadas para evitar
+   gastar tokens repetidos cuando una usuaria mueve el deslizador de precios o recarga.
 """
 import json
 import os
@@ -14,23 +18,41 @@ cargar_variables_entorno()
 
 
 class AgenteRecomendadorIA:
+    _cache_diagnosticos: Dict[str, str] = {}
+    _contador_llamadas_api: int = 0
+    _MAX_LLAMADAS_POR_SESION: int = 15
+
     def __init__(self, nombre_agente: str = "custommatch-ia-colombia-01"):
         self.worker_id = nombre_agente
-        self.vertex_project = os.environ.get("VERTEX_PROJECT", "projects/custommatch-ai")
-        self.api_key = os.environ.get("AI_API_KEY", "")
+        self._vertex_project = os.environ.get("VERTEX_PROJECT", "")
+        self._api_key = os.environ.get("AI_API_KEY", "")
 
-    def _consultar_api_ia(self, texto_prompt: str) -> str:
-        if not self.api_key:
+    def _consultar_api_ia_protegida(self, clave_cache: str, texto_prompt: str) -> str:
+        """
+        Consulta la API de Google AI solo si:
+        - Hay clave configurada en `.env`
+        - El resultado aún no está en caché (`_cache_diagnosticos`)
+        - No se ha superado el límite de protección de tokens (`_MAX_LLAMADAS_POR_SESION`)
+        """
+        if clave_cache in self._cache_diagnosticos:
+            return self._cache_diagnosticos[clave_cache]
+
+        if not self._api_key or self._contador_llamadas_api >= self._MAX_LLAMADAS_POR_SESION:
             return ""
 
-        id_proyecto = self.vertex_project.replace("projects/", "").strip()
-        urls = [
-            f"https://aiplatform.googleapis.com/v1/projects/{id_proyecto}/locations/us-central1/publishers/google/models/gemini-1.5-flash:generateContent?key={self.api_key}",
-            f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={self.api_key}"
-        ]
+        id_proyecto = self._vertex_project.replace("projects/", "").strip()
+        urls = []
+        if id_proyecto:
+            urls.append(
+                f"https://aiplatform.googleapis.com/v1/projects/{id_proyecto}/locations/us-central1/publishers/google/models/gemini-1.5-flash:generateContent?key={self._api_key}"
+            )
+        urls.append(
+            f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={self._api_key}"
+        )
+
         cuerpo = json.dumps({
             "contents": [{"parts": [{"text": texto_prompt}]}],
-            "generationConfig": {"temperature": 0.35, "maxOutputTokens": 250}
+            "generationConfig": {"temperature": 0.35, "maxOutputTokens": 180}
         }).encode("utf-8")
 
         for url in urls:
@@ -41,13 +63,16 @@ class AgenteRecomendadorIA:
                 method="POST"
             )
             try:
+                self._contador_llamadas_api += 1
                 with urllib.request.urlopen(peticion, timeout=4.0) as respuesta:
                     datos = json.loads(respuesta.read().decode("utf-8"))
                     candidatos = datos.get("candidates", [])
                     if candidatos:
                         partes = candidatos[0].get("content", {}).get("parts", [])
                         if partes and "text" in partes[0]:
-                            return partes[0]["text"].strip()
+                            texto = partes[0]["text"].strip()
+                            self._cache_diagnosticos[clave_cache] = texto
+                            return texto
             except Exception:
                 continue
         return ""
@@ -60,19 +85,20 @@ class AgenteRecomendadorIA:
         if isinstance(conditions, str):
             conditions = [conditions]
 
+        clave_cache = f"{skin_type}_{skin_tone}_{undertone}_{'-'.join(sorted(conditions))}"
         prompt = (
-            f"Actúa como dermocosmética experta en Colombia. Analiza este perfil de piel: "
+            f"Actúa como dermocosmética experta. Analiza este perfil de piel: "
             f"tipo de piel {skin_type}, tono {skin_tone}, subtono {undertone}, "
             f"condiciones {', '.join(conditions)}. "
             f"Escribe en 2 frases qué fórmulas de base, corrector y rubor debe usar."
         )
-        resumen_ia = self._consultar_api_ia(prompt)
+        resumen_ia = self._consultar_api_ia_protegida(clave_cache, prompt)
         if not resumen_ia:
             resumen_ia = self._construir_resumen_experto(skin_type, skin_tone, undertone, conditions)
+            self._cache_diagnosticos[clave_cache] = resumen_ia
 
         return {
             "worker_id": self.worker_id,
-            "vertex_project": self.vertex_project,
             "skin_type": skin_type,
             "skin_tone": skin_tone,
             "undertone": undertone,
@@ -89,6 +115,11 @@ class AgenteRecomendadorIA:
         precio_maximo_cop: int,
         cantidad_resultados: int
     ) -> Dict[str, Any]:
+        """
+        Genera el mensaje de recomendación de búsqueda de forma local e instantánea
+        para NO gastar tokens de la API de Google cada vez que la usuaria mueve el
+        deslizador de presupuesto o cambia de categoría.
+        """
         skin_type = perfil_piel.get("skin_type", "mixta")
         skin_tone = perfil_piel.get("skin_tone", "media")
         undertone = perfil_piel.get("undertone", "oliva")
@@ -100,25 +131,15 @@ class AgenteRecomendadorIA:
             categoria if categoria != "todos" else "maquillaje"
         )
         presupuesto_str = f"${int(precio_maximo_cop):,}".replace(",", ".")
+        cond_txt = ", ".join(conditions) if conditions and conditions != ["ninguna"] else "cuidado diario"
 
-        prompt = (
-            f"Usuaria con datos guardados: piel {skin_type}, tono {skin_tone}, "
-            f"subtono {undertone}, condiciones {', '.join(conditions)}. "
-            f"Está buscando '{termino}' con presupuesto máximo de {presupuesto_str}. "
-            f"Explica en 2 frases cortas qué características priorizamos para ella."
+        consejo = (
+            f"Productos seleccionados para tu piel {skin_type}, tono {skin_tone} y subtono {undertone} ({cond_txt}) "
+            f"dentro de tu presupuesto de {presupuesto_str}."
         )
-        consejo = self._consultar_api_ia(prompt)
-        if not consejo:
-            cond_txt = ", ".join(conditions) if conditions and conditions != ["ninguna"] else "cuidado diario"
-            consejo = (
-                f"Productos seleccionados para tu piel {skin_type}, tono {skin_tone} y subtono {undertone} ({cond_txt}) "
-                f"dentro de tu presupuesto de {presupuesto_str}."
-            )
 
         return {
             "worker_id": self.worker_id,
-            "vertex_project": self.vertex_project,
-            "api_key_configured": bool(self.api_key),
             "search_term": termino,
             "max_price_cop": int(precio_maximo_cop),
             "formatted_budget_cop": presupuesto_str,
