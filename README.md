@@ -1,4 +1,4 @@
-# L'Éclat AI Colombia — Recomendación de Maquillaje según tu Piel
+#Recomendación de Maquillaje según tu Piel
 
 Plataforma distribuida de recomendación dermocosmética y catálogo de maquillaje en Colombia conectada a **TiDB Cloud (`test`)** y **Google AI (`projects/388824298555`)**.
 
