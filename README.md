@@ -2,7 +2,7 @@
 
 Plataforma distribuida de recomendación dermocosmética y catálogo de maquillaje en Colombia conectada a **TiDB Cloud (`test`)** y **Google AI (`projects/388824298555`)**.
 
-## Estructura de Carpetas (en Español)
+## Estructura de Carpetas 
 
 - **`app.py`**: Punto de entrada para iniciar el servidor en `http://localhost:8000`.
 - **`base_de_datos_sql/crear_tablas_tidb.sql`**: Comandos SQL de creación de tablas en TiDB Cloud.
